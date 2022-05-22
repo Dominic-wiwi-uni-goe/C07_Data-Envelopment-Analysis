@@ -18,7 +18,7 @@ The optimisation method can furthermore be based on constant returns on scale (C
 ![image](https://user-images.githubusercontent.com/102478331/169691971-1c758205-5c1e-44ec-80f1-5f90ba6e66e8.png)
 
 ### Hands-on application of Data Envelopment Analysis
-The graphic representation of an axis diagram (x,y) (where x the variable of unit entries and y the variable of unit exits) creates the boundaries or the frontiers of efficiency (based on [8] and [26]. We consider 8 units (A,…..,K), one of which has different rates of entry and exit and we put them into a Cartesian diagram of location (figure 2). The inclination of the straight line which passes through the starting point of axes as well as the point of every unit represents the efficiency of the unit. The units with the maximum efficiency are in this case B and I. The remaining units are characterized as non-efficient. The line that passes through the particular units is called efficient frontier which refers to the steady return to scale (SRC) and to CCR Model. The area which is enveloped by this line is called Production Possibility Set. On the contrary, the broken line ΑΒΙK sets the Efficient Frontier which is referred to the variable return to scale (VRC) as well as Banker, Charnes and Cooper Model.
+The graphic representation of an axis diagram (x,y) (where x the variable of unit entries and y the variable of unit exits) creates the boundaries or the frontiers of efficiency. We consider 8 units (A,…..,K), one of which has different rates of entry and exit and we put them into a Cartesian diagram of location. The inclination of the straight line which passes through the starting point of axes as well as the point of every unit represents the efficiency of the unit. The units with the maximum efficiency are in this case B and I. The remaining units are characterized as non-efficient. The line that passes through the particular units is called efficient frontier which refers to the steady return to scale (SRC) and to CCR Model. The area which is enveloped by this line is called Production Possibility Set. On the contrary, the broken line ΑΒΙK sets the Efficient Frontier which is referred to the variable return to scale (VRC) as well as Banker, Charnes and Cooper Model.
 
 ![image](https://user-images.githubusercontent.com/102478331/169692047-6d3f7998-382e-46ce-96eb-8e557431c4db.png)
 
@@ -31,11 +31,58 @@ You can download a free version of MaxDEA Basics 8 here: http://maxdea.com/Downl
 - Easy to backup your DEA models and dataset. Everything is saved in a single file. The software, your dataset and the settings for your DEA model are all integrated into the single program file, and it is the only file needed for MaxDEA Ultra, so it is very convenient to backup. After closing and reopening MaxDEA Ultra, your database and model settings are still there unchanged.
 - Most important of all, MaxDEA Ultra provides nearly all the possible combinations of up-to-date DEA models. To use a combination of multiple DEA models, just choose all the relevant options. For example, Network-Malmquist model with weakly disposable bad outputs can be achieved by choosing the settings for Network, Undesirable outputs, Weak disposability and Malmquist, at the same time.
 
-#### Step 1: Open the software
+### Case study
+In this case study, our objective is to calcualte the individual efficiency scores of grocery stores. We have a dataset containing 423 grocery stores (=DMUs) and the following data:
+
+![image](https://user-images.githubusercontent.com/102478331/169692814-383b8ca4-4766-4392-9ead-2cebdfd842da.png)
+
+It is important to note that we aspire to maximize the sales and the number of articles, hence, the outputs of the grocery stores.  
+
+#### Step 1: Data preperation
+- The first and only the first row must contain field (column, variable) names. The field names can be anything you want.
+- DMU Name is the identifier for each DMU, so it must be unique. The DMU name can be anything, such as letters, characters, numbers or mixture of them.
+- Note that the DEA results are sorted by DMU name, so if you expect the results to be displayed in the order as that in the dataset, your dataset should be sorted by DMU name. For example, use “DMU001, DMU002, …DMU100” instead of DMU1, DMU2, …DMU100”. If you use numbers as DMU name, such as 1,2,…,100, MaxDEA will automatically format the numbers by adding leading zeros, like 001, 002,…,100, so that the results are displayed in numerical order. The number of leading zeros added depends on the length of the maximum number.
+
+![image](https://user-images.githubusercontent.com/102478331/169692372-8776ccb5-7b62-4c18-ad8a-6d77ee22d8e9.png)
 
 #### Step 2: Import the dataset
+![image](https://user-images.githubusercontent.com/102478331/169692425-4f6ae9a9-3791-4582-bfa6-5ac6619d623e.png)
 
+After importing the data, we have do define the role of every column in our dataset.
+![image](https://user-images.githubusercontent.com/102478331/169692482-c1061d06-eb07-4ef3-88ac-c235fb3c29e3.png)
 
+#### Step 3: Define inputs, putputs, DMUs, time variable, etc.
+![image](https://user-images.githubusercontent.com/102478331/169692536-aa04d889-37ad-465e-a75b-7d24cdb00691.png)
+
+We have to attribute one role to every column in the dataset.
+
+![image](https://user-images.githubusercontent.com/102478331/169692857-e13fe490-acdb-4aa7-87f2-9de8249d4815.png)
+
+#### Step 4: Select the envelopment model
+![image](https://user-images.githubusercontent.com/102478331/169692736-6f5b1f5f-f938-45c7-b56d-99ee02d88471.png)
+
+#### Step 5a: DEA model - Distance
+![image](https://user-images.githubusercontent.com/102478331/169692765-f1d85cba-d405-4c7a-b1ec-2d622387c822.png)
+
+#### Step 5b: DEA model - Orientation
+![image](https://user-images.githubusercontent.com/102478331/169692778-5aebf5bd-9eea-4af7-80b7-00740b443e52.png)
+
+#### Step 5c: DEA model - Scale assumption
+![image](https://user-images.githubusercontent.com/102478331/169692876-f17c3df9-cbe1-46c9-be2e-e384d2925b8b.png)
+
+#### Step 5d: DEA model - Output
+Finall, we define what results we want to get and run the model.
+![image](https://user-images.githubusercontent.com/102478331/169692889-4f4ff1cd-101a-4478-a82e-d55d1dfaf6cf.png)
+
+#### Step 6: Download results in Excel
+![image](https://user-images.githubusercontent.com/102478331/169692936-3ab371c2-4636-4341-a8a4-c39f62260219.png)
+
+### Further analysis
+We can then proceed in Excel to visualize the results, e.g., by a histogram to look at the distribution of efficiency.
+
+![image](https://user-images.githubusercontent.com/102478331/169693001-a0ab7531-0765-4915-a606-867a63977fee.png)
+
+Furthermore, we could run a regression and check the impact of, e.g., the number of inhabitants around a grocery store, on efficiency. Important: (1) If you plan to run a regression analysis, you need a Tobit regression and (2) the factors in the regression must not correlate with inputs or outputs!
 
 ## Sources:
 Charnes, A., William Wagner Cooper, and E. Rhodes. 1978. “Measuring the Efficiency of Decision Making Units.” European Journal of Operational Research 2 (6): 429–444. doi:10.1016/0377-2217(78)90138-8.
